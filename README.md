@@ -4,7 +4,9 @@ This is an example app demonstrates how to integrate Google Play Billing library
 Step 1 : Clone this project and change to your package name by following command :
 
          $git clone https://github.com/vijaysoren/Integrate-Google-Play-billing-library-in-your-android-app.git
-         or just create your own new project.
+         
+         
+or just create your own new project.
 
 Step 2 : Add Google Play Billing Library dependency to your app's build.gradle file
 
