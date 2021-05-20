@@ -1,9 +1,10 @@
 # Integrate Google Play billing library in your android app
-This is an example app demonstrates how to integrate Google Play Billing library in an android app.
+This is an example app demonstrates how to integrate Google Play Billing library in an android app and this is only for demonstration purpose.
+Not intended to commercially used trademarks. The Trademarks are their respective owners.
 
 Step 1 : Clone this project and change to your package name by following command :
 
-         $git clone https://github.com/vijaysoren/Integrate-Google-Play-billing-library-in-your-android-app.git
+         git clone https://github.com/vijaysoren/Integrate-Google-Play-billing-library-in-your-android-app.git
          
          
 or just create your own new project.
@@ -45,4 +46,4 @@ Note : This is a demo project and you still need to implement code to save purch
 
 
 
- *Google Play is a trademark of Google Inc.
+ *Google Play and Android are trademarks of Google Inc.
