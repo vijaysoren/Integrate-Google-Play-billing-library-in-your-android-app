@@ -32,7 +32,7 @@ Step 8 : Click "Create new release" and upload APK or bundle and add testers. Yo
 
 Step 9 : Finally roll out test
 
-Step 10 : Create a subscription item in your Google Play console's, your application dashboard >> Monetize >> Products >> subscriptions >> create subcripption and name it "vip" or if you choose your own you need to change SUBSCRIPTION_ITEM = "your item", enter details and click save.
+Step 10 : Create a subscription item in your Google Play console's, your application dashboard >> Monetize >> Products >> subscriptions >> create subcripption and name it "vip" or if you choose your own you need to change SUBSCRIBE_VIP = "your item", enter details and click save.
 
 Step 11: In Android studio, copy code from SubscriptionActivity.java to your project according to your need or you can clone this project just to test.
 
