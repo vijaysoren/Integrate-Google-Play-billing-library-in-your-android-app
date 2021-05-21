@@ -32,11 +32,13 @@ Step 8 : Click "Create new release" and upload APK or bundle and add testers. Yo
 
 Step 9 : Finally roll out test
 
-Step 10: In Android studio, copy code from SubscriptionActivity.java to your project according to your need or you can clone this project just to test.
+Step 10 : Create a subscription item in your Google Play console's, your application dashboard >> Monetize >> Products >> subscriptions >> create subcripption and name it "vip" or if you choose your own you need to change SUBSCRIPTION_ITEM = "your item", enter details and click save.
 
-Step 11: Import all classes if you see errors by clicking ALT + ENTER
+Step 11: In Android studio, copy code from SubscriptionActivity.java to your project according to your need or you can clone this project just to test.
 
-Step 12 : Run this app in your device with your google account. Make a test purchase.
+Step 12: Import all classes if you see errors by clicking ALT + ENTER
+
+Step 13 : Run this app in your device with your google account. Make a test purchase.
 
 Congratulations! You have successfully integrated Google Play Billing Library into your anroid app.
 
