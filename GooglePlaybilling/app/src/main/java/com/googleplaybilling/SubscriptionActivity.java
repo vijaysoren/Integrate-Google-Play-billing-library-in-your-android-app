@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.billingclient.api.AcknowledgePurchaseParams;
+import com.android.billingclient.api.AcknowledgePurchaseResponseListener;
 import com.android.billingclient.api.BillingClient;
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
@@ -35,6 +37,13 @@ public class SubscriptionActivity extends AppCompatActivity implements Purchases
     private final String SUBSCRIBE_VIP = "vip";
 
     private Button subscribe;
+
+    private final AcknowledgePurchaseResponseListener acknowledgePurchaseResponseListener = new AcknowledgePurchaseResponseListener() {
+        @Override
+        public void onAcknowledgePurchaseResponse(@NonNull BillingResult billingResult) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,23 +154,27 @@ public class SubscriptionActivity extends AppCompatActivity implements Purchases
         // Ensure entitlement was not already granted for this purchaseToken.
         // Grant entitlement to the user.
 
-        ConsumeParams consumeParams = ConsumeParams.newBuilder()
-                .setPurchaseToken(purchase.getPurchaseToken())
-                .build();
 
-        ConsumeResponseListener listener = new ConsumeResponseListener() {
-            @Override
-            public void onConsumeResponse(BillingResult billingResult, @NonNull String purchaseToken) {
-                if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
-                    // Handle the success of the consume operation.
-                    saveSubscriptionState();
-                    subscribe.setVisibility(View.INVISIBLE);
-                    Log.d("purchase token", purchaseToken);
-                    //save purchase token in your backend server and verify purchase
-                }
+        if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
+            saveSubscriptionState();
+            if (!purchase.isAcknowledged()) {
+                AcknowledgePurchaseParams acknowledgePurchaseParams =
+                        AcknowledgePurchaseParams.newBuilder()
+                                .setPurchaseToken(purchase.getPurchaseToken())
+                                .build();
+                billingClient.acknowledgePurchase(acknowledgePurchaseParams, acknowledgePurchaseResponseListener);
+            }else {
+                Toast.makeText(this, "subscribed", Toast.LENGTH_SHORT).show();
+                this.recreate();
             }
-        };
+        }else if (purchase.getPurchaseState() == Purchase.PurchaseState.PENDING){
+            subscribe.setText("pending");
+            Toast.makeText(this, "Pending payment", Toast.LENGTH_SHORT).show();
+        }else if (purchase.getPurchaseState() == Purchase.PurchaseState.UNSPECIFIED_STATE){
+            Toast.makeText(this, "unspecified state", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "unknown error", Toast.LENGTH_SHORT).show();
+        }
 
-        billingClient.consumeAsync(consumeParams, listener);
     }
 }
