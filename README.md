@@ -48,4 +48,4 @@ Note : This is a demo project and you still need to implement code to save purch
 
 
 
- *Google Play and Android are trademarks of Google Inc.
+ *Google Play and Android are trademarks of Google LLC.
